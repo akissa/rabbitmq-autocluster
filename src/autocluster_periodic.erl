@@ -44,7 +44,12 @@ start_immediate(Id, Interval, {M, F, A} = MFA) ->
 start_delayed(Id, Interval, {M, F, A}) ->
     ensure_ets_table(),
     {ok, TRef} = timer:apply_interval(Interval, M, F, A),
-    true = ets:insert_new(?TABLE, {Id, TRef}),
+    case ets:insert_new(?TABLE, {Id, TRef}) of
+        true ->
+            ok;
+        false ->
+            ok
+    end,
     ok.
 
 %% @doc
