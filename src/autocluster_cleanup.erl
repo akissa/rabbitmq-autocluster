@@ -227,7 +227,7 @@ maybe_remove_nodes([Node|Nodes], true) ->
   maybe_remove_nodes(Nodes, true);
 maybe_remove_nodes([Node|Nodes], false) ->
   autocluster_log:warning("(cleanup) removing ~p from cluster", [Node]),
-  rabbit_mnesia:forget_cluster_node(Node, false),
+  rabbit_mnesia:forget_cluster_node(Node, true),
   maybe_remove_nodes(Nodes, false).
 
 %%--------------------------------------------------------------------
