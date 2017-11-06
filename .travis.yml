@@ -2,7 +2,7 @@ language: erlang
 
 otp_release:
   # Primary target
-  - 17.5
+  - 18.3
   # Secondary target - runing PropEr tests and checking compatibily with modern erlang
   - 19.1
 
@@ -104,6 +104,6 @@ deploy:
   file: autocluster-${TRAVIS_TAG}.tgz
   skip_cleanup: true
   on:
-    condition: "$TRAVIS_OTP_RELEASE = 17.5"
+    condition: "$TRAVIS_OTP_RELEASE = 18.3"
     tags: true
     repo: aweber/rabbitmq-autocluster
